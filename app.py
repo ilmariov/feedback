@@ -11,7 +11,7 @@ if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456@localhost/lexus'
 else:
     app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456@<host>:<port>/<dbname>'
+    app.config['SQLALCHEMY_DATABASE_URI'] = ''
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
