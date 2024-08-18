@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from send_mail import send_mail
-import os
 
 app = Flask(__name__)
 
@@ -12,11 +12,12 @@ if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456@localhost/lexus'
 else:
     app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://feebbackdb_user:WYYkRaawhVZbAo5eFBpyasIYRv3RkHqh@dpg-cr0l9drtq21c73ci42d0-a.oregon-postgres.render.com/feebbackdb'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 class Feedback(db.Model):
     __tablename__ = 'feedback'
