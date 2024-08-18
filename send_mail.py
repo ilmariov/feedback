@@ -1,11 +1,12 @@
+import os
 import smtplib
 from email.mime.text import MIMEText
 
 def send_mail(customer, dealer, rating, comments):
-    port = 587
-    smtp_server = 'live.smtp.mailtrap.io'
-    login = 'api'
-    password = '6b39e903c5b249119f893828f0b6a0a6'
+    port = os.getenv('SMTP_PORT')
+    smtp_server = os.getenv('SMTP_SERVER')
+    login = os.getenv('SMTP_USERNAME')
+    password = os.getenv('SMTP_PASSWORD')
     message = f"<h3>New Feedback Submission</h3><ul><li>Customer: {customer}</li><li>Dealer: {dealer}</li><li>Rating: {rating}</li><li>Comments: {comments}</li></ul>"
 
     sender_email = 'mailtrap@demomailtrap.com'
