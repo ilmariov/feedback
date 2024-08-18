@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: feedback-app
+    env: python
+    buildCommand: ''
+    startCommand: 'flask run'
+    envVars:
+      - key: DATABASE_URL
+        value: 'postgresql://feebbackdb_user:WYYkRaawhVZbAo5eFBpyasIYRv3RkHqh@dpg-cr0l9drtq21c73ci42d0-a/feebbackdb'
+    postDeployCommand: 'flask db upgrade'
